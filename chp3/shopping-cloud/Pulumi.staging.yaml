@@ -1,0 +1,8 @@
+config:
+  shopping-cloud:backendPort: "3000"
+  shopping-cloud:database: cart
+  shopping-cloud:frontendPort: "3002"
+  shopping-cloud:mongoHost: mongodb://mongo:27017
+  shopping-cloud:mongoPort: "27017"
+  shopping-cloud:nodeEnvironment: staging
+  shopping-cloud:protocol: http://

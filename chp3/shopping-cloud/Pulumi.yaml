@@ -1,0 +1,7 @@
+name: shopping-cloud
+runtime: nodejs
+description: A pulumi program for an online store
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript

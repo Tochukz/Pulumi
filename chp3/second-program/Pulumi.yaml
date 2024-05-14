@@ -1,0 +1,7 @@
+name: second-program
+runtime: nodejs
+description: A program to demostrate stack references
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript

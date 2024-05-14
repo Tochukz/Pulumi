@@ -1,7 +1,9 @@
 # Pulumi  
 [Docs](https://www.pulumi.com/docs/)  
+[CLI Reference](https://www.pulumi.com/docs/cli/)  
 [GitHub](https://github.com/pulumi/pulumi)  
 [Pulumi vs Terraform](https://www.pulumi.com/docs/concepts/vs/terraform/)  
+[Pulumi and AWS](https://www.pulumi.com/docs/clouds/aws/)  
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
@@ -77,11 +79,12 @@ __Resource__
 [How to Guide](https://www.pulumi.com/registry/packages/aws/how-to-guides/)  
 [Pulumi Blog](https://www.pulumi.com/blog/tag/aws/)
 
-## Chapter 2: Pulumi Concepts
-[Pulumi Fundamentals](https://www.pulumi.com/learn/pulumi-fundamentals/)   
-[Building with Pulumi](https://www.pulumi.com/learn/building-with-pulumi/)  
+## Chapter 2: Pulumi Fundamental Concepts
+[Pulumi Fundamentals](https://www.pulumi.com/learn/pulumi-fundamentals/)    
 [pulumi concepts](https://www.pulumi.com/docs/concepts/)    
 
+## Chapter 3: Programs, Stacks, Stack References and Secrets
+[Building with Pulumi](https://www.pulumi.com/learn/building-with-pulumi/)
 
 ## Architecture
 [Pulumi Templates](https://www.pulumi.com/templates/)  

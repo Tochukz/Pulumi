@@ -4,9 +4,8 @@
 [Pulumi vs Terraform](https://www.pulumi.com/docs/concepts/vs/terraform/)  
 
 ## Chapter 1: Getting started
-Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure,
-reliable, and hassle-free.
-To learn more about getting started with various providers, see [Getting Started](https://www.pulumi.com/docs/get-started/)  
+Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
+To learn more about getting started with various providers, see [Getting Started](https://www.pulumi.com/docs/get-started/)   
 
 ### Getting started with AWS
 [Get started with Pulumi & AWS](https://www.pulumi.com/docs/clouds/aws/get-started/)  
@@ -25,7 +24,7 @@ $ curl -fsSL https://get.pulumi.com | sh
 ```
 
 __Install Language Runtime__   
-Install you the runtime for your chosen language.
+Install the runtime for your chosen language.
 Supported languages includes TypeScript, JavaScript, Python, Go, C#, Java and YAML.
 
 __Configure Pulumi to access your AWS account__  
@@ -35,7 +34,7 @@ otherwise, you need to export variables as follows:
 $ export AWS_ACCESS_KEY_ID=<YOUR_ACCESS_KEY_ID>
 $ export AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_ACCESS_KEY>
 ```
-With you AWS access key id and secret access key.  
+With your AWS access key id and secret access key.  
 
 __Create new project__
 ```
@@ -43,7 +42,7 @@ $ mkdir getting-started
 $ cd getting-started
 $ pulumi new aws-typescript  
 ```  
-If you do not use want to go through the login process, use the  `--generate-only` flag.  
+If you do not want to go through the login process, use the  `--generate-only` flag.  
 
 __Provision resources__  
 Now to deploy your resources
@@ -51,7 +50,7 @@ Now to deploy your resources
 $ pulumi up
 ```
 
-If you user the `--generate-only` flag then you will need to install dependencies and run `stack init` manually
+If you use the `--generate-only` flag then you will need to install dependencies and run `stack init` manually
 ```
 $ npm install
 $ pulumi stack init
@@ -69,7 +68,7 @@ $ pulumi destroy
 ```
 To delete the stack itself, run the `stack rm` command.
 ```
-$
+$ pulumi stack rm
 ```
 This removes the stack entirely from _Pulumi Cloud_, along with all of its update history.  
 
@@ -80,6 +79,7 @@ __Resource__
 
 ## Chapter 2: Pulumi Concepts
 [Pulumi Fundamentals](https://www.pulumi.com/learn/pulumi-fundamentals/)   
+[Building with Pulumi](https://www.pulumi.com/learn/building-with-pulumi/)  
 [pulumi concepts](https://www.pulumi.com/docs/concepts/)    
 
 

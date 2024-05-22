@@ -1,0 +1,9 @@
+name: simple-s3-backend
+runtime: nodejs
+description: A minimal AWS TypeScript Pulumi program
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: ""
+backend:
+  url: s3://pulumi-dev-states

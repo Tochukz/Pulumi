@@ -4,6 +4,7 @@
 [GitHub](https://github.com/pulumi/pulumi)  
 [Pulumi vs Terraform](https://www.pulumi.com/docs/concepts/vs/terraform/)  
 [Pulumi and AWS](https://www.pulumi.com/docs/clouds/aws/)  
+[Learning Pathways](https://www.pulumi.com/learn/)  
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
@@ -85,6 +86,39 @@ __Resource__
 
 ## Chapter 3: Programs, Stacks, Stack References and Secrets
 [Building with Pulumi](https://www.pulumi.com/learn/building-with-pulumi/)
+
+
+### State Management
+__Pulumi Login__
+To login to your backend state
+```bash
+$ pulumi login
+```
+This will login to Pulumi cloud
+To login to a specific backend such as s3
+```bash
+# Create the S3 bucket
+$ aws s3 mb s3://pulumi-dev-states
+# Login to the S3
+$ pulumi login s3://pulumi-dev-states
+```
+
+Alternatively, you can set the `PULUMI_BACKEND_URL` environment variable to the s3 bucket _s3://pulumi-dev-states_.  
+Or set backend property in the project `Pulumi.yaml` config file as below:
+```yaml
+....
+backend:
+  url: s3://pulumi-dev-states
+....
+```
+
+__Pulumi Logout__  
+To log out of your current state
+```bash
+$ pulumi logout
+```
+This will remove all credentials information from `~/.pulumi/credentials.json` and you will need to log in again before performing any subsequent stack or state operations.
+
 
 ## Architecture
 [Pulumi Templates](https://www.pulumi.com/templates/)  

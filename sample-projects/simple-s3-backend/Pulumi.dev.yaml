@@ -1,0 +1,5 @@
+encryptionsalt: v1:KWH5/Q8aYLI=:v1:gpz8IOdyF5Vz6xPP:jdSTl4I2RGpJ/BV4jYAlGr1kFvrqrg==
+config:
+  simple-s3-backend:apiEndpoint: https://test.api.com
+  simple-s3-backend:apiKey:
+    secure: v1:O/ZX5XtUIrfbMksu:yzfC5oJ64v00Qx8FXbP1F/maix2wGVs2eNAVX59OUGwLahMA2ObrCgrcOstjalr6

@@ -1,3 +1,5 @@
 .vscode
 *-env.sh
 !sample-env.sh
+.env
+*-state.json

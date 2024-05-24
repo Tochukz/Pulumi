@@ -3,11 +3,23 @@
 [CLI Reference](https://www.pulumi.com/docs/cli/)  
 [Pulumi vs Terraform](https://www.pulumi.com/docs/concepts/vs/terraform/)  
 [Pulumi and AWS](https://www.pulumi.com/docs/clouds/aws/)  
+[Index of AWS services](https://www.pulumi.com/docs/clouds/aws/guides/aws-index-of-services/)
 [Learning Pathways](https://www.pulumi.com/learn/)  
 [Pulumi AWS Guide](https://www.pulumi.com/docs/clouds/aws/guides/)  
 [List of AWS Services](https://www.pulumi.com/docs/clouds/aws/guides/aws-index-of-services/)  
 
+__Basic CLI Operations__  
 
+Operation            | Command
+---------------------|---------
+Create a stack       | `pulumi stack init`
+List stacks          | `pulumi stack ls`
+Select a Stack       | `pulumi stack select chucks-company/network-dev`
+Show stack output    | `pulumi stack output`
+Rename current stack | `pulumi stack rename chucks-company/network-dev`
+Delete a stack       | `pulumi stack rm chucks-company/database-prod`
+Set config param     | `pulumi config set database:dbName app_db`
+Set config secret    | `pulumi config set database:dbPassword --secret `
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.

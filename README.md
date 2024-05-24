@@ -1,10 +1,13 @@
 # Pulumi  
 [Docs](https://www.pulumi.com/docs/)  
 [CLI Reference](https://www.pulumi.com/docs/cli/)  
-[GitHub](https://github.com/pulumi/pulumi)  
 [Pulumi vs Terraform](https://www.pulumi.com/docs/concepts/vs/terraform/)  
 [Pulumi and AWS](https://www.pulumi.com/docs/clouds/aws/)  
 [Learning Pathways](https://www.pulumi.com/learn/)  
+[Pulumi AWS Guide](https://www.pulumi.com/docs/clouds/aws/guides/)  
+[List of AWS Services](https://www.pulumi.com/docs/clouds/aws/guides/aws-index-of-services/)  
+
+
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
@@ -90,7 +93,9 @@ __Resource__
 [Building with Pulumi](https://www.pulumi.com/learn/building-with-pulumi/)
 
 
-## State Management
+## Chapter 4: State Management
+[Managing state & backend options](https://www.pulumi.com/docs/concepts/state)
+
 ### Pulumi Login  
 To login to your backend
 ```bash
@@ -218,6 +223,60 @@ $ pulumi logout
 ```
 This will remove all credentials information from `~/.pulumi/credentials.json` and you will need to log in again before performing any subsequent stack or state operations.
 
+## Chapter 5: Importing resources
+There are two ways to impotrt existing resources into a Pulumi project:
+1. Using the `pulumi import` CLI command.  
+This method is suitable for projects having only one stack.
+2. Using `import resource option` in code.  
+This approach may be preferable in scenarios that call for importing multiple resources of the same type across multiple stacks and/or deployment environments.  
+
+__Import using pulumi import CLI command__  
+First we create a resource outside of Pulumi using AWS CLI
+```bash
+$ aws s3 mb s3://simple-storage-bucket-1349
+```
+We import the resource into Pulumi using `pulumi import` command
+```bash
+$ pulumi import aws:s3/bucket:Bucket simple-bucket simple-storage-bucket-1349
+```  
+This will add the S3 bucket resource to the state of the current stack.  
+It will also generate code describing the resource’s current configuration on the terminal.
+You can then copy the code into you Pulumi project.  
+
+
+__Import using resource option in code__  
+Let's create a resource outside of Pulumi using AWS CLI
+```bash
+$  aws sns create-topic --name simple-messages
+```
+Next, create the resource in your Pulumi code using the `import resource option`
+```ts
+import * as aws from "@pulumi/aws";
+
+const simpleTopic = new aws.sns.Topic(
+  "simple-topic",
+  {
+    name: "simple-messages",
+  },
+  {
+    import: "arn:aws:sns:eu-west-2:665778208875:simple-messages",
+    protect: true,
+  }
+);
+```  
+In this case, the `import option` in the resource configuration references the ARN of the SNS topic.   
+Next, we run `pulumi up` to import the resource.  
+
+After successfully importing a resource, you can delete the _import option_ or set it to _undefined_ if you like, then re-run `pulumi up`, and all subsequent operations will now behave as though Pulumi had provisioned the imported resource from the outset.  
+If you wish to ensure that an imported resource survives through `pulumi destroy`, consider using the `retainOnDelete resource option`.
+
+__Note__: Using the `import resource option` does not modify the state of the current stack but rather it delegates that responsibility to the program to be handled as part of the normal infrastructure lifecycle — for example, on the next `pulumi up`.   
+
+__Destroy__  
+To destroy the stack, you must do the following
+1. remove the `resource protect options` or set it to false for each of the resource
+2. run `pulumi up`
+3. run `pulumi destory`.  
 
 ## Architecture
 [Pulumi Templates](https://www.pulumi.com/templates/)  

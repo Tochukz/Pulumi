@@ -47,6 +47,8 @@ $ pulumi new aws-typescript
 ```  
 If you do not want to go through the login process, use the  `--generate-only` flag.  
 
+You can also use `pulumi new` and follow the prompts to create a new Pulumi project.  
+
 __Provision resources__  
 Now to deploy your resources
 ```
@@ -173,7 +175,7 @@ $ pulumi login azblob://container-path?storage_account=account_name
 ```
 The Azure account must have the Storage Blob Data Contributor role or an equivalent role with permissions to read, write, and delete blobs.
 
-### Migrating Between State Backends 
+### Migrating Between State Backends
 Moving a stack between backends isn’t as simple as merely copying its state file because the state file includes information about its backend as well as other unique information such as its encryption provider.  
 Pulumi also supports migrating stacks between backends using the `pulumi stack export` and `pulumi stack import` commands.
 

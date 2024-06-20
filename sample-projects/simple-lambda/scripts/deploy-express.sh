@@ -18,7 +18,7 @@ bucketName=local-dev-workspace
 
 cd ../../../sample-apps/express-app
 
-zip -q -r express.zip . -x ".*" "node_modules/*" "migrations/*" "resources/*" "seeders/*" "tmp/*" "sql/*" "output/*"
+zip -q -r express.zip . -x ".*" "node_modules/*" "migrations/*" "resources/*" "seeders/*" "tmp/*" "sql/*" "output/*" "express-lambda-func.json"
 
 if [ -z "$nolayer" ] 
 then

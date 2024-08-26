@@ -3,3 +3,6 @@
 !sample-env.sh
 *.env
 *-state.json
+*.zip
+node_modules
+.DS_Store

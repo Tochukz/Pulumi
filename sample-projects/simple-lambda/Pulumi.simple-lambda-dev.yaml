@@ -1,0 +1,10 @@
+config:
+  aws:region: eu-west-2
+  simple-lambda:aliases:
+    - app.example.com
+    - dev.example.com
+  simple-lambda:variables:
+    DB_PASS:
+      secure: AAABAF6VjVcfzlvGub5itAi8N98fcbeyJCNDug01MJYCpzFt7sTeqgGHwPYkfg==
+    NODE_ENV: development
+    PORT: 8080

@@ -10,26 +10,30 @@
 
 __Basic CLI Operations__  
 
-Operation              | Command
------------------------|---------
-Login to Pulimu Cloud  | `pulumi logout`
-Logout of Pulumi Cloud | `pulumi logout`
-Set default org        | `pulumi org set-default chucks-company`
-View default org       | `pulumi org get-default`  
-Create a stack (prompt)| `pulumi stack init`
-Create a stack direct  | `pulumi stack init chucks-company/network-staging`
-List stacks            | `pulumi stack ls`
-Select a Stack         | `pulumi stack select chucks-company/network-dev`
-Show stack output      | `pulumi stack output`
-Rename current stack   | `pulumi stack rename chucks-company/network-dev`
-Delete a stack         | `pulumi stack rm chucks-company/database-prod`
-Set config param       | `pulumi config set database:dbName app_db`
-Set config secret      | `pulumi config set database:dbPassword --secret `
-Preview stack          | `pulumi preview`
-Preview with policy    | `pulumi preview --policy-pack ./simple-policy`
-Deploy a stack         | `pulumi up`
-Deploy with policy     | `pulumi up --policy-pack ./simple-policy`
-Publish a policy       | `pulumi policy publish chucks-company`
+Operation                    | Command
+-----------------------------|---------
+Login to Pulimu Cloud        | `pulumi logout`
+Logout of Pulumi Cloud       | `pulumi logout`
+Set default organization     | `pulumi org set-default chucks-company`
+View default organizartion   | `pulumi org get-default`  
+Create a stack (prompt)      | `pulumi stack init`
+Create a stack direct        | `pulumi stack init chucks-company/network-staging`
+List stacks                  | `pulumi stack ls`
+Select a Stack               | `pulumi stack select chucks-company/network-dev`
+Show stack output            | `pulumi stack output`
+Rename current stack         | `pulumi stack rename chucks-company/network-dev`
+Delete a stack               | `pulumi stack rm chucks-company/database-prod`
+Set config param             | `pulumi config set database:dbName app_db`
+Set config secret            | `pulumi config set database:dbPassword --secret `
+Set first element of a list  | `pulumi config set --path 'aliases[0]' app.example.com`
+Set second element of a list | `pulumi config set --path 'aliases[1]' dev.example.com`  
+Set the value of a map       | `pulumi config set --path variables.NODE_ENV development`
+Set secret for map value     | `pulumi config set --secret --path variables.DB_PASS simple-pass123`
+Preview stack                | `pulumi preview`
+Preview with policy          | `pulumi preview --policy-pack ./simple-policy`
+Deploy a stack               | `pulumi up`
+Deploy with policy           | `pulumi up --policy-pack ./simple-policy`
+Publish a policy             | `pulumi policy publish chucks-company`
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.

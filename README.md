@@ -10,16 +10,26 @@
 
 __Basic CLI Operations__  
 
-Operation            | Command
----------------------|---------
-Create a stack       | `pulumi stack init`
-List stacks          | `pulumi stack ls`
-Select a Stack       | `pulumi stack select chucks-company/network-dev`
-Show stack output    | `pulumi stack output`
-Rename current stack | `pulumi stack rename chucks-company/network-dev`
-Delete a stack       | `pulumi stack rm chucks-company/database-prod`
-Set config param     | `pulumi config set database:dbName app_db`
-Set config secret    | `pulumi config set database:dbPassword --secret `
+Operation              | Command
+-----------------------|---------
+Login to Pulimu Cloud  | `pulumi logout`
+Logout of Pulumi Cloud | `pulumi logout`
+Set default org        | `pulumi org set-default chucks-company`
+View default org       | `pulumi org get-default`  
+Create a stack (prompt)| `pulumi stack init`
+Create a stack direct  | `pulumi stack init chucks-company/network-staging`
+List stacks            | `pulumi stack ls`
+Select a Stack         | `pulumi stack select chucks-company/network-dev`
+Show stack output      | `pulumi stack output`
+Rename current stack   | `pulumi stack rename chucks-company/network-dev`
+Delete a stack         | `pulumi stack rm chucks-company/database-prod`
+Set config param       | `pulumi config set database:dbName app_db`
+Set config secret      | `pulumi config set database:dbPassword --secret `
+Preview stack          | `pulumi preview`
+Preview with policy    | `pulumi preview --policy-pack ./simple-policy`
+Deploy a stack         | `pulumi up`
+Deploy with policy     | `pulumi up --policy-pack ./simple-policy`
+Publish a policy       | `pulumi policy publish chucks-company`
 
 ## Chapter 1: Getting started
 Pulumi optionally pairs with the [_Pulumi Cloud_](https://www.pulumi.com/docs/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
@@ -109,12 +119,14 @@ __Resource__
 [Managing state & backend options](https://www.pulumi.com/docs/concepts/state)
 
 ### Pulumi Login  
+__Login to Pulumi Cloud for CLI access login credential__  
 To login to your backend
 ```bash
 $ pulumi login
 ```
 This will login to the default Pulumi cloud backend.
 
+__Login to S3 backend for CLI access__  
 To login to a specific backend such as s3
 ```bash
 # Create the S3 bucket
@@ -149,6 +161,18 @@ Google Cloud Storage | `gs://bucket-path`
 Local File System    | `file://fs-path`
 
 Checkpoint files are stored in a relative `.pulumi` directory in the root of the storage.  
+
+__Login to Pulumi Cloud for CLI using Access Token__  
+You can login to Pulumi using access token.
+Go to your [account tokens page](app.pulumi.com/account/tokens) to generate an access token.    
+Use the access token to login on your terminal:  
+```bash
+$ export PULUMI_ACCESS_TOKEN=<your-access-token>
+$ pulumi login
+```  
+To persist the access token across terminal sessions, you can add the export command to your shell’s configuration file:
+* For Bash: Add the line to ~/.bashrc or ~/.bash_profile.
+* For Zsh: Add the line to ~/.zshrc.
 
 __Local Filesystem__  
 You can use the `--local` flag to login for local backend
@@ -197,7 +221,7 @@ Moving a stack between backends isn’t as simple as merely copying its state fi
 Pulumi also supports migrating stacks between backends using the `pulumi stack export` and `pulumi stack import` commands.
 
 To migrate a stack named `my-app-production` from a self-managed backend to the Pulumi Cloud backend:
-```
+```bash
 # switch to the backend/stack we want to export
 $ pulumi login --local
 $ pulumi stack select my-app-production
@@ -214,7 +238,7 @@ $ pulumi stack init my-app-production
 
 # import the new existing state into pulumi.com
 $ pulumi stack import --file my-app-production.stack.json
-```
+````
 
 ### Checkpoints
 Pulumi state is usually stored in a transactional snapshot called a checkpoint. Pulumi records checkpoints early and often as it executes so that Pulumi can operate reliably, similar to how database transactions work.
@@ -257,7 +281,7 @@ You can then copy the code into you Pulumi project.
 
 
 __Import using resource option in code__  
-Let's create a resource outside of Pulumi using AWS CLI
+Let us create a resource outside of Pulumi using AWS CLI
 ```bash
 $  aws sns create-topic --name simple-messages
 ```
@@ -289,6 +313,32 @@ To destroy the stack, you must do the following
 1. remove the `resource protect options` or set it to false for each of the resource
 2. run `pulumi up`
 3. run `pulumi destory`.  
+
+## Chapter 6: Pulumi Cross Guard  
+[pulumi CrossGuard](https://www.pulumi.com/docs/using-pulumi/crossguard/)   
+CrossGuard is Pulumi’s Policy as Code offering. CrossGuard empowers you to set guardrails to enforce compliance for resources so developers within an organization can provision their own infrastructure while sticking to best practices and security compliance.
+
+### AWSGuard policies
+[AWS CrossGuard](https://www.pulumi.com/docs/using-pulumi/crossguard/awsguard/)   
+__Setup__  
+1. Create a new `aws-typescript` project
+```bash
+$ mkdir simple-project
+$ cd simple-project
+$ pulumi new aws-typescript
+```
+2. Create a new `awsguard` policy pack
+```bash
+$ mkdir simple-policy
+$ cd simple-policy
+$ pulumi policy new awsguard-typescript
+```
+3. Modify the policy configuration as needed in `simple-policy/index.ts` file
+4. Run a `preview` on you project using the policy pack
+```bash
+$ cd simple-project
+$ pulumi preview --policy-pack ../simple-policy
+```
 
 ## Architecture
 [Pulumi Templates](https://www.pulumi.com/templates/)  

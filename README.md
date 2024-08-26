@@ -12,7 +12,7 @@ __Basic CLI Operations__
 
 Operation                    | Command
 -----------------------------|---------
-Login to Pulimu Cloud        | `pulumi logout`
+Login to Pulimu Cloud        | `pulumi login`
 Logout of Pulumi Cloud       | `pulumi logout`
 Set default organization     | `pulumi org set-default chucks-company`
 View default organizartion   | `pulumi org get-default`  

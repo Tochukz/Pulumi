@@ -29,6 +29,7 @@ Set first element of a list  | `pulumi config set --path 'aliases[0]' app.exampl
 Set second element of a list | `pulumi config set --path 'aliases[1]' dev.example.com`  
 Set the value of a map       | `pulumi config set --path variables.NODE_ENV development`
 Set secret for map value     | `pulumi config set --secret --path variables.DB_PASS simple-pass123`
+Remove value                 | `pulumi config rm --path variables.DB_PASS`
 Preview stack                | `pulumi preview`
 Preview with policy          | `pulumi preview --policy-pack ./simple-policy`
 Deploy a stack               | `pulumi up`

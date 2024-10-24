@@ -179,6 +179,8 @@ To persist the access token across terminal sessions, you can add the export com
 * For Bash: Add the line to ~/.bashrc or ~/.bash_profile.
 * For Zsh: Add the line to ~/.zshrc.
 
+__Different Pulumi Account for Different Project__  
+
 __Local Filesystem__  
 You can use the `--local` flag to login for local backend
 ```bash

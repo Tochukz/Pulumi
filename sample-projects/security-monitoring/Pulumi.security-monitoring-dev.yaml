@@ -1,0 +1,4 @@
+config:
+  aws:profile: chucks
+  security-monitoring:notificationEmail: tochukwu.nwachukwu@scrums.com
+  security-monitoring:Env: Dev

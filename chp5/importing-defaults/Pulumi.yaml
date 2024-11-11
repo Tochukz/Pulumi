@@ -1,0 +1,7 @@
+name: importing-defaults
+runtime: nodejs
+description: Demo of importing default resources
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: ""
